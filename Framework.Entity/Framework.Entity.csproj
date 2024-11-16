@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="$(SolutionDir)\PostBuildEvent.bat $(ConfigurationName) $(SolutionDir) $(TargetDir) $(TargetName) $(ProjectName)" />
+	</Target>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="$(SolutionDir)\PreBuildEvent.bat $(ProjectPath)" />
+	</Target>
+</Project>
